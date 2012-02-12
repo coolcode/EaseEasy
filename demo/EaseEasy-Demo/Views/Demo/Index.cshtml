@@ -1,0 +1,14 @@
+﻿@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="@Url.Content("~/Content/EaseEasy.css")" rel="stylesheet" type="text/css" />
+<h2>EaseEasy: Hello World!</h2>
+@(
+ Html.Grid<Blog>().Columns(c => {
+	 c.Column("Id").Width(102).Sortable(true);
+	 c.Column("Title").Width(102).Header("标题").Sortable(true);
+	 c.Column("Author").Width(102).Header("作者").Sortable(true);
+ })
+ .IsAjax(false)
+)

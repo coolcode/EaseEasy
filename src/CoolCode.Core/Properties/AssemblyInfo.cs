@@ -7,11 +7,11 @@ using System.Security;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("CoolCode.Core")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Ease&amp;Easy ASP.NET MVC Framework")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Bruce Lee")]
 [assembly: AssemblyProduct("CoolCode.Core")]
-[assembly: AssemblyCopyright("Copyright ©  2009 - 2011")]
+[assembly: AssemblyCopyright("Copyright © CoolCode 2009 - 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

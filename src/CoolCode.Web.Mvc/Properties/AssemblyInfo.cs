@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("CoolCode.Web.Mvc")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Ease&amp;Easy ASP.NET MVC Framework")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("CoolCode")]
+[assembly: AssemblyCompany("Bruce Lee")]
 [assembly: AssemblyProduct("CoolCode.Web.Mvc")]
-[assembly: AssemblyCopyright("Copyright © CoolCode 2009")]
+[assembly: AssemblyCopyright("Copyright © CoolCode 2009 - 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

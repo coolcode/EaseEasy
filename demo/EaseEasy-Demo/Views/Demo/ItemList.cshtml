@@ -1,0 +1,7 @@
+﻿@(
+ Html.Grid<Blog>().Columns(c => {
+	 c.Column(x=> x.Id).Width(102).Sortable(true);
+	 c.Column(x=> x.Title).Width(102).Header("标题").Sortable(true);
+	 c.Column(x=> x.Author).Width(102).Header("作者").Sortable(true); 
+ }) 
+)

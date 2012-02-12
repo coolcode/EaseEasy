@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "AjaxGrid";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AjaxGrid</h2>
+<link href="@Url.Content("~/Content/EaseEasy.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/EaseEasy.js")" type="text/javascript"></script>
+
+@Html.GridLoader("ItemList")

@@ -21,3 +21,5 @@ _ReSharper.*
 *.testsettings
 *.vsmdi
 TestResults
+nuget-pack
+*.nuspec

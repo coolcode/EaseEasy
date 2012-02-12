@@ -97,9 +97,6 @@
     <Compile Include="Collections\RelationCollection.cs" />
     <Compile Include="Converter.cs" />
     <Compile Include="Data\Entity\DbSetExtensions.cs" />
-    <Compile Include="Data\Linq\TableExtensions.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="DynamicHelper.cs" />
     <Compile Include="Dynamic\DynamicMethodExecutor.cs" />
     <Compile Include="Extensions\Enum\EnumAttachStringExtensions.cs" />
@@ -170,7 +167,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
