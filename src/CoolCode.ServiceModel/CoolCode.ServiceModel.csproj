@@ -60,6 +60,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\ExternalAssemblyInfo.cs">
+      <Link>Properties\ExternalAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Caching\CacheExtensions.cs" />
     <Compile Include="Caching\ICache.cs" />
     <Compile Include="Caching\WebCacheStrategy.cs" />

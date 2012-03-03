@@ -97,6 +97,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\ExternalAssemblyInfo.cs">
+      <Link>Properties\ExternalAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="ActionResults\ActionResultExtensions.cs" />
     <Compile Include="Ajax\JsonActionInvoker.cs" />
     <Compile Include="Ajax\JsonController.cs" />

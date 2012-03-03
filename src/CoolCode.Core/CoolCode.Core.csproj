@@ -87,6 +87,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\ExternalAssemblyInfo.cs">
+      <Link>Properties\ExternalAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Caching\CacheExtension.cs" />
     <Compile Include="Caching\CacheHelper.cs" />
     <Compile Include="Caching\CacheKeyBuilder.cs" />
