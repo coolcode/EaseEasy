@@ -8,6 +8,8 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.ComponentModel;
+using Newtonsoft.Json;
+using System.Text.RegularExpressions;
 
 namespace CoolCode {
 	public static class ObjectExtensions {
@@ -104,5 +106,71 @@ namespace CoolCode {
 
 			return dict;
 		}
+        
+        public static string ToJson(this object data) {
+            return JsonConvert.SerializeObject(data);
+        }
+
+        public static T ToObject<T>(this string text) {
+            return JsonConvert.DeserializeObject<T>(text);
+        }
+
+        public static Stream ToStream(this string text) {
+            byte[] array = Encoding.UTF8.GetBytes(text);
+
+            return new MemoryStream(array);
+        }
+
+        public static string ToText(this Stream stream) {
+            using (var reader = new StreamReader(stream)) {
+                return reader.ReadToEnd();
+            }
+        }
+
+        public static Stream ToStream(this object data) {
+           return data.ToJson().ToStream(); 
+        }
+
+        public static T ToObject<T>(this Stream stream) {
+            return stream.ToText().ToObject<T>();
+        }        
+
+        /// <summary>
+        /// 把Unicode解码为普通文字
+        /// </summary>
+        /// <param name="unicodeString">要解码的Unicode字符集</param>
+        /// <returns>解码后的字符串</returns>
+        public static string ConvertToGB(this string text) {
+            MatchCollection mc = Regex.Matches(text, "\\\\u([\\w]{4})");
+            if (mc != null && mc.Count > 0) {
+                foreach (Match m2 in mc) {
+                    string v = m2.Value;
+                    string word = v.Substring(2);
+                    byte[] codes = new byte[2];
+                    int code = Convert.ToInt32(word.Substring(0, 2), 16);
+                    int code2 = Convert.ToInt32(word.Substring(2), 16);
+                    codes[0] = (byte)code2;
+                    codes[1] = (byte)code;
+                    text = text.Replace(v, Encoding.Unicode.GetString(codes));
+                }
+            }
+
+            return text;
+        }
+
+        /// <summary>
+        /// 把汉字字符转码为Unicode字符集
+        /// </summary>
+        /// <param name="strGB">要转码的字符</param>
+        /// <returns>转码后的字符</returns>
+        public static string ConvertToUnicode(this string strGB) {
+            char[] chs = strGB.ToCharArray();
+            string result = string.Empty;
+            foreach (char c in chs) {
+                result += @"/u" + char.ConvertToUtf32(c.ToString(), 0).ToString("x");
+            }
+            return result;
+        }
+
 	}
 }
