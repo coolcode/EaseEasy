@@ -10,6 +10,7 @@ namespace CoolCode.Web.Mvc.UI {
 			int pageSize = 10,
 			PagerModes mode = PagerModes.All,
 			string pageFieldName = GridView.DefaultPageFieldName,
+			string pageSizeFieldName = GridView.DefaultPageSizeFieldName,
 			string firstText = "<<",
 			string previousText = "<",
 			string nextText = ">",
@@ -24,6 +25,6 @@ namespace CoolCode.Web.Mvc.UI {
 
 		IGridViewBuilder<T> Bind(IEnumerable<T> dataSource);
 
-		IGridViewBuilder<T> IsAjax(bool value);
+		IGridViewBuilder<T> Ajax(bool isAjax = true, string updateTargetId = "");
 	}
 }

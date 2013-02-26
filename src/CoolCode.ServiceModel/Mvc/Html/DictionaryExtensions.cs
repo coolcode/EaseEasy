@@ -63,5 +63,11 @@ namespace CoolCode.Web.Mvc.Html {
 
 			return htmlHelper.RadioButtonList(name, source.ToSelectList());
 		}
+
+        public static IHtmlString DictionaryText(this HtmlHelper htmlHelper, string dictionaryName, string key) {
+            var text = _systemService.GetDictionaryText(dictionaryName, key);
+
+            return MvcHtmlString.Create(text);
+        }
 	}
 }

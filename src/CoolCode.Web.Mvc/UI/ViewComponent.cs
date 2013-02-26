@@ -76,6 +76,10 @@ namespace CoolCode.Web.Mvc.UI {
 			if (replaceExisting || !this.HtmlAttributes.ContainsKey(key)) {
 				this.HtmlAttributes[key] = value;
 			}
+            else if (this.HtmlAttributes.ContainsKey(key))
+            {
+                this.HtmlAttributes[key] += " " + value;
+            }
 		}
 
 		public void MergeAttributes<TKey, TValue>(IDictionary<TKey, TValue> attributes) {

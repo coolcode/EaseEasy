@@ -10,12 +10,16 @@ namespace CoolCode.Web.Mvc {
 			return new MessageResult(success, message);
 		}
 
-		public static MessageResult Success(this Controller controller) {
-			return new MessageResult(true);
+		public static MessageResult Success(this Controller controller, object result = null) {
+			return new MessageResult(true, result);
 		}
 
 		public static MessageResult Fail(this Controller controller, string message) {
 			return new MessageResult(false, message);
 		}
+
+        public static MessageResult Fail(this Controller controller, object result = null) {
+            return new MessageResult(false, result);
+        }
 	}
 }

@@ -31,19 +31,20 @@ namespace CoolCode.Web.Mvc.UI {
 
 	public class GridView : ViewComponent, IGridView {
 		protected internal const string DefaultPageFieldName = "page";
-		protected internal const string DefaultEmptyText = "There is no data available.";
+		protected internal const string DefaultPageSizeFieldName = "pageSize";
 		protected internal const string DefaultSortFieldName = "sort";
 		protected internal const string DefaultSortDirFieldName = "sortdir";
+		protected internal const string DefaultEmptyText = "没有找到相关数据.";
 
 		public string EmptyText { get; set; }
 		public IHtmlAttributes Attributes { get; set; }
 		public bool IsAjax { get; set; } 
-		//TODO:Imp ShowScrollBar
-		public bool ShowScrollBar { get; set; }
+		public string UpdateTargetId{ get; set; }
 
 		public bool Pagable { get; set; }
 		public int PageSize { get; set; }
 		public string PageFieldName { get; set; }
+		public string PageSizeFieldName { get; set; }
 		public PagerModes PageMode { get; set; }
 		public string PageFirstText { get; set; }
 		public string PagePreviousText { get; set; }
@@ -68,9 +69,10 @@ namespace CoolCode.Web.Mvc.UI {
 			Pagable = true;
 			PageSize = 10;
 			PageFieldName = DefaultPageFieldName;
+			PageSizeFieldName = DefaultPageSizeFieldName;
 		}
 
-		public override void RenderContent(TextWriter writer) {
+		public override void Render(TextWriter writer) {
 
 		}
 	}

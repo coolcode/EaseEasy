@@ -24,14 +24,13 @@ namespace CoolCode {
 			var setterDelegate = cache.Get(type.FullName + "_" + propertyName + "_SetValue",
 				() => {
 					ParameterExpression parameter = Expression.Parameter(type, "x");
-					MethodInfo setter = typeof(T).GetMethod("set_" + propertyName);
+					MethodInfo setter = type.GetMethod("set_" + propertyName);
 
 					if (setter == null) {
 						throw new MethodAccessException(string.Format("Cannot access setter of the property '{0}'", propertyName));
 					}
 
 					ParameterExpression value = Expression.Parameter(setter.GetParameters()[0].ParameterType, "propertyValue");
-					;
 					MethodCallExpression call = Expression.Call(parameter, setter, value);
 					LambdaExpression lambda = Expression.Lambda(call, parameter, value);
 					var exp = lambda.Compile();

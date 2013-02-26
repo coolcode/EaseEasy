@@ -43,7 +43,7 @@ namespace CoolCode.Web.Mvc.UI {
 		public TBuilder GenerateId() {
 			if (string.IsNullOrEmpty(Component.Name)) {
 				string prefix = Component.GetType().Name;
-				string key = "Mvc_ViewComponent_IDSEQ_" + prefix;
+				string key = "Mvc_UI_" + prefix;
 				int seq = 1;
 
 				if (ViewContext.HttpContext.Items.Contains(key)) {
@@ -53,7 +53,7 @@ namespace CoolCode.Web.Mvc.UI {
 				else {
 					ViewContext.HttpContext.Items.Add(key, seq);
 				}
-				Component.Name = prefix + seq.ToString();
+				Component.Name = prefix + seq;
 			}
 
 			return this as TBuilder;
@@ -64,8 +64,8 @@ namespace CoolCode.Web.Mvc.UI {
 			return this as TBuilder;
 		}
 
-		public virtual TBuilder Css(string className) {
-			Component.MergeAttribute("class", className, true);
+		public virtual TBuilder Css(string className, bool replaceExisting = true) {
+			Component.MergeAttribute("class", className, replaceExisting);
 			return this as TBuilder;
 		}
 
@@ -85,7 +85,10 @@ namespace CoolCode.Web.Mvc.UI {
 		}
 
 		public virtual TBuilder MergeAttribute(string key, object value) {
-			Component.MergeAttribute(key, value.ToString());
+            if(value!=null)
+            {
+                Component.MergeAttribute(key, value.ToString());
+            }
 			return this as TBuilder;
 		}
 

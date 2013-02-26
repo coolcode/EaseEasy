@@ -17,7 +17,7 @@ namespace CoolCode.Web.Mvc.UI {
 			}
 			else {
 				string curStyle = attributes["style"];
-				if (!newStyle.Contains("width")) {
+				if (!curStyle.Contains(newStyle)&& !newStyle.Contains("width")) {
 					attributes["style"] = newStyle + curStyle;
 				}
 			}

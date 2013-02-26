@@ -12,10 +12,11 @@ namespace CoolCode.Web.Mvc.UI {
 		string EmptyText { get; set; }
 		IHtmlAttributes Attributes { get; set; }
 		bool IsAjax { get; set; }
-		bool ShowScrollBar { get; set; }
+		string UpdateTargetId { get; set; }
 		bool Pagable { get; set; }
 		int PageSize { get; set; }
 		string PageFieldName { get; set; }
+		string PageSizeFieldName { get; set; }
 		PagerModes PageMode { get; set; }
 		string PageFirstText { get; set; }
 		string PagePreviousText { get; set; }

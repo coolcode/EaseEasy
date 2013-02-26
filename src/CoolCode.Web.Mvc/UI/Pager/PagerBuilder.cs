@@ -26,6 +26,11 @@ namespace CoolCode.Web.Mvc.UI {
 			return this;
 		}
 
+		public PagerBuilder PageSizeFieldName(string value) {
+			Component.PageSizeFieldName = value;
+			return this;
+		}
+
 		public PagerBuilder Summary(string format, bool visible = true) {
 			Component.SummaryFormat = format;
 			Component.SummaryVisible = visible;
@@ -62,7 +67,7 @@ namespace CoolCode.Web.Mvc.UI {
 		}
 
 		public PagerBuilder LinkCss(string value) {
-			Component.Link.Css(value);
+			Component.LinkCss = value;
 			return this;
 		}
 
@@ -80,5 +85,16 @@ namespace CoolCode.Web.Mvc.UI {
 			Component.DataSource = source;
 			return this;
 		}
+
+		public PagerBuilder UpdateTarget(string updateTargetId) {
+			Component.UpdateTargetId = updateTargetId;
+			return this;
+		}
+
+		public PagerBuilder TemplateName(string templateName) {
+			Component.TemplateName = templateName;
+			return this;
+		}
+		 
 	}
 }

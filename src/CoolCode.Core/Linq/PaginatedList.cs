@@ -31,6 +31,15 @@ namespace CoolCode.Linq {
 			this.AddRange(source.Skip(PageIndex * PageSize).Take(PageSize));
 		}
 
+        public PaginatedList(IEnumerable<T> source, int pageIndex, int pageSize, int totalRecords) {
+            PageIndex = pageIndex < 0 ? 0 : pageIndex;
+            PageSize = pageSize < 0 ? 10 : pageSize;
+            TotalRecords = totalRecords;
+            PageCount = (int)Math.Ceiling(TotalRecords / (double)PageSize);
+
+            this.AddRange(source);
+        }
+
 		public PaginatedList(IQueryable<T> source, PageParam p)
 			: this(source, p.PageIndex, p.PageSize) {
 		}
@@ -103,7 +112,7 @@ namespace CoolCode.Linq {
 		public static IPaginatedList<TResult> Select<T, TResult>(this IPaginatedList<T> paginatedList, Func<T, TResult> selector) {
 			IEnumerable<T> list = paginatedList;
 			IEnumerable<TResult> target = list.Select(selector);
-			PaginatedList<TResult> result = new PaginatedList<TResult>(paginatedList, target);
+			IPaginatedList<TResult> result = new PaginatedList<TResult>(paginatedList, target);
 			return result;
 		}
 

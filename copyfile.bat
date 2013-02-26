@@ -1,0 +1,1 @@
+xcopy "." ..\..\..\..\app\packages\Referencies /y /i

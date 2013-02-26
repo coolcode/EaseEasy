@@ -66,7 +66,7 @@ namespace CoolCode.Web.Mvc.UI {
 		protected virtual void RenderItem(GridRow<T> rowData) {
 			RenderRowStart(rowData);
 
-			foreach (var column in Columns()) {
+			foreach (var column in VisibleColumns()) {
 				RenderStartCell(column, rowData);
 
 				RenderCellValue(column, rowData);
@@ -88,7 +88,7 @@ namespace CoolCode.Web.Mvc.UI {
 		protected virtual bool RenderHeader() {
 			RenderHeadStart();
 
-			foreach (var column in Columns()) {
+			foreach (var column in VisibleColumns()) {
 				RenderHeaderCellStart(column);
 				RenderHeaderText(column);
 				RenderHeaderCellEnd();

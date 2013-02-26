@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.Dynamic;
 using System.Web;
 using System.Web.UI;
 using System.Web.WebPages;
@@ -57,8 +59,12 @@ namespace CoolCode.Web.Mvc.UI {
 			}
 
 			//通过Lambda表达式指定字段名：从委托获取属性值
-			//通过字符串指定字段名：通过反射获取
-			value = GetRawValue(row.Value) ?? DataBinder.Eval(row.Value, Name);
+			value = GetRawValue(row.Value);
+
+			//匿名类型或动态类型
+			if (value == null) {
+				row.TryGetMember(Name, out value);//通过字符串指定字段名：通过反射获取,不支持动态类型！//DataBinder.Eval(row.Value, Name);
+			}
 
 			//格式化，一般用于日期、数值等转换
 			if (!string.IsNullOrEmpty(Format)) {
@@ -74,7 +80,28 @@ namespace CoolCode.Web.Mvc.UI {
 		}
 
 		public virtual string GetHeader() {
-			return HeaderFunc == null ? Header ?? Name : Template(x => HeaderFunc(x), this, false).ToHtmlString();
+			return HeaderFunc == null ?
+				(Header ?? GetDisplayNameFromMetadata() ?? Name) :
+				Template(x => HeaderFunc(x), this, false).ToHtmlString();
+		}
+
+		private string GetDisplayNameFromMetadata() {
+			var type = typeof (T);
+			var typeDescriptor = new AssociatedMetadataTypeTypeDescriptionProvider(type).GetTypeDescriptor(type);
+
+			if (typeDescriptor == null) {
+				return null;
+			}
+
+			var prop = typeDescriptor.GetProperties().Find(Name, false);
+			
+			//var prop = TypeDescriptor.GetProperties(typeof(T)).Find(Name, false);//这种写法不支持MetadataType！
+
+			if (prop == null) {
+				return null;
+			}
+
+			return  prop.DisplayName ;
 		}
 
 		private static HelperResult Template(Func<dynamic, object> format, dynamic arg, bool htmlEncode = true) {
@@ -100,7 +127,9 @@ namespace CoolCode.Web.Mvc.UI {
 		}
 
 		public object GetRawValue(dynamic instance) {
-			return RawValueFunc == null ? null : RawValueFunc(instance);
+			return RawValueFunc == null ?
+				(instance is DynamicObject ? DynamicHelper.GetMemberValue(instance, Name) : null) :
+				RawValueFunc(instance);
 		}
 	}
 }

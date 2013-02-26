@@ -11,19 +11,6 @@ namespace CoolCode.ServiceModel.Mvc {
 			get { return User.Identity.Name; }
 		}
 
-		/*
-		public T NewModel<T>() where T : new() {
-			T entity = new T();
-			ITrackEntity t = entity as ITrackEntity;
-			if (t != null) {
-				t.CreateUser = UserID;
-				t.UpdateUser = UserID;
-				t.CreateDate = DateTime.Now;
-				t.UpdateDate = DateTime.Now;
-			}
-			return entity;
-		}*/
-
 		public T RetrieveModel<T>() where T : class, new() {
 			T model = new T();
 			TryUpdateModel<T>(model);

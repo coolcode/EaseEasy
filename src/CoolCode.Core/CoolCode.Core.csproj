@@ -62,13 +62,10 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.4.2.0.0\lib\net40\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
@@ -102,7 +99,10 @@
     <Compile Include="Chinese2Spell.cs" />
     <Compile Include="Collections\RelationCollection.cs" />
     <Compile Include="Converter.cs" />
+    <Compile Include="Data\Entity\DbContextExtensions.cs" />
     <Compile Include="Data\Entity\DbSetExtensions.cs" />
+    <Compile Include="Data\SqlMapper.cs" />
+    <Compile Include="DynamicDictionary.cs" />
     <Compile Include="DynamicHelper.cs" />
     <Compile Include="Dynamic\DynamicMethodExecutor.cs" />
     <Compile Include="Extensions\Enum\EnumAttachStringExtensions.cs" />
@@ -173,6 +173,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
