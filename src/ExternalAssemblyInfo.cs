@@ -9,7 +9,7 @@ using System.Security;
 [assembly: AssemblyDescription("Ease&amp;Easy ASP.NET MVC Framework")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Bruce Lee")] 
-[assembly: AssemblyCopyright("Copyright © CoolCode 2009 - 2012")]
+[assembly: AssemblyCopyright("Copyright © EaseEasy 2009 - 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -29,5 +29,5 @@ using System.Security;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.0.0.1")]
-[assembly: AssemblyFileVersion("2.0.0.1")]
+[assembly: AssemblyVersion("2.0.0.2")]
+[assembly: AssemblyFileVersion("2.0.0.2")]
