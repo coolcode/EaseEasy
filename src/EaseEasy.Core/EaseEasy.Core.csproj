@@ -113,6 +113,7 @@
     <Compile Include="Extensions\InvokeMemberExtensions.cs" />
     <Compile Include="Extensions\ElementExtensions.cs" />
     <Compile Include="Dynamic\InstanceCreator.cs" />
+    <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Lambda\Hash.cs" />
     <Compile Include="IFluentInterface.cs" />
     <Compile Include="Lazy\LazyBuilder.cs" />
